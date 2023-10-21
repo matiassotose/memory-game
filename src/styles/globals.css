@@ -26,18 +26,46 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.memory-game {
+.page-container {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  height: 90vh;
+}
+
+.title {
+  display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.memory-game {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
   height: 100vh;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .memory-game {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .memory-card {
   position: relative;
-  width: 150px;
-  height: 150px;
+  height: 240px;
+  width: 140px;
   margin: 10px;
   perspective: 1000px;
   cursor: pointer;
@@ -65,6 +93,15 @@ body {
 .memory-card .back-face {
   background-color: #666;
   transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.memory-card .back-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .memory-card.flip .front-face {
